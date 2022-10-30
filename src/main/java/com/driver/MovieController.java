@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.swing.text.html.parser.Entity;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -36,15 +37,11 @@ public class MovieController {
 
     @GetMapping("/get-movie-by-name/{name}")
     public ResponseEntity<Movie> getMovieByName(@PathVariable("name")String name){
-        //Entity n = movieService.getMovieByName(name);
-       // Movie m=new Movie();
-
         return new ResponseEntity<Movie>(movieService.getMovieByName(name),HttpStatus.OK);
     }
 
     @GetMapping("/get-director-by-name/{name}")
     public ResponseEntity<Director> getDirectorByName(@PathVariable("name")String name){
-        //Director d=new Director();
         return new ResponseEntity<Director>(movieService.getDirectorByName(name),HttpStatus.OK);
     }
 
@@ -69,4 +66,5 @@ public class MovieController {
         movieService.deleteAllDirectors();
         return new ResponseEntity("success",HttpStatus.OK);
     }
+
 }

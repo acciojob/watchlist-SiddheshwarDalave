@@ -15,14 +15,20 @@ public class MovieRepository {
 
     void addMovie(Movie movie) {
         mapOfMovies.put(movie.getName(), movie);
+        listOfMovieDirectorPair.put(movie.getName(),null);
     }
 
     void addDirector(Director director) {
         mapOfDirector.put(director.getName(), director);
+        listOfMovieDirectorPair.put(null, director.getName());
     }
 
     void addMovieDirectorPair(String movieName, String directorName) {
-        listOfMovieDirectorPair.put(movieName, directorName);
+
+        if(mapOfMovies.containsKey(movieName) && mapOfDirector.containsKey(directorName)){
+            listOfMovieDirectorPair.put(movieName, directorName);
+        }
+
     }
 
     Movie getMovieByName(String movieName) {
@@ -66,6 +72,5 @@ public class MovieRepository {
             }
         }
     }
-
 }
 
